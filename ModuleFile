@@ -1,0 +1,8 @@
+name          'liamjbennett-windows_eventlog'
+version       '0.0.1'
+author        'liamjbennett'
+license       'Apache License, Version 2.0'
+summary       'Module to the windows event log'
+project_page  'https://github.com/liamjbennett/puppet-windows_eventlog'
+dependency    'puppetlabs/stdlib', '>=3.0.0 <4.0.0'
+dependency    'puppetlabs/registry', '>= 0.1.1'
