@@ -87,7 +87,7 @@ describe 'windows_eventlog', :type => :define do
     end
 
     it { should contain_registry_key('HKLM\System\CurrentControlSet\Services\Eventlog\Application').with(
-      'ensure' => 'present',
+      'ensure' => 'present'
     )}
 
     it { should contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File').with(
