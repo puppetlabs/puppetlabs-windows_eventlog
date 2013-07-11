@@ -6,6 +6,11 @@ Puppet module for managing windows event logs
 
 This module is also available on the [Puppet Forge](https://forge.puppetlabs.com/liamjbennett/windows_eventlog)
 
+[![Build
+Status](https://secure.travis-ci.org/liamjbennett/puppet-windows_eventlog.png)](http://travis-ci.org/liamjbennett/puppet-windows_eventlog)
+[![Dependency
+Status](https://gemnasium.com/liamjbennett/puppet-windows_eventlog.png)](http://gemnasium.com/liamjbennett/puppet-windows_eventlog)
+
 ##Module Description
 
 The purpose of this module is to manage each of the windows event logs, including the size, rotation and retention
