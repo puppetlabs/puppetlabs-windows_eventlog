@@ -25,19 +25,19 @@ define windows_eventlog(
   validate_re($log_size, '^\d*$','The log_size argument must be a number or a string representation of a number')
   validate_re($max_log_policy, '^(overwrite|manual|archive)$','The max_log_policy argument must contain overwrite, manual or archive')
 
-  $root_key = 'HKLM\System\CurrentControlSet\Services\Eventlog'
+  $root_key = "HKLM\\System\\CurrentControlSet\\Services\\Eventlog"
 
   registry_key { "${root_key}\\${name}":
     ensure => present
   }
 
-  registry_value { "${root_key}\\${name}\File":
+  registry_value { "${root_key}\\${name}\\File":
     ensure => present,
     type   => 'expand',
     data   => $log_path
   }
 
-  registry_value { "${root_key}\\${name}\MaxSize":
+  registry_value { "${root_key}\\${name}\\MaxSize":
     ensure => present,
     type   => 'dword',
     data   => $log_size,
@@ -45,21 +45,21 @@ define windows_eventlog(
 
   case $max_log_policy {
     'overwrite': {
-      registry_value { "${root_key}\\${name}\Retention":
+      registry_value { "${root_key}\\${name}\\Retention":
         ensure => present,
         type   => 'dword',
         data   => '0'
       }
     }
     'manual': {
-      registry_value { "${root_key}\\${name}\Retention":
+      registry_value { "${root_key}\\${name}\\Retention":
         ensure => present,
         type   => 'dword',
         data   => '1'
       }
     }
     'archive': {
-      registry_value { "${root_key}\\${name}\AutoBackupLogFiles":
+      registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
         ensure => present,
         type   => 'dword',
         data   => '-1'
