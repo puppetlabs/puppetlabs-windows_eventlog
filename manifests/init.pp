@@ -1,19 +1,36 @@
-# Define windows_eventlog
+# Author::    Liam Bennett (mailto:liamjbennett@gmail.com)
+# Copyright:: Copyright (c) 2014 Liam Bennett
+# License::   MIT
+
+# == Define windows_eventlog
 #
-# This definition manages a windows event log, including the size, rotation and retention
+# Mode that manages windows event logs, including the size, rotation and retention
 #
-# Parameters:
-#   [*log_path*] - the path to the log file that you want to manage
-#   [*log_size*] - the max size of the log file
-#   [*max_log_policy*] - the retention policy for the log
+# === Requirements/Dependencies
 #
-# Usage:
+# Currently reequires the puppetlabs/stdlib module on the Puppet Forge in
+# order to validate much of the the provided configuration.
 #
-#    windows_eventlog { 'Application':
-#      log_path => '%SystemRoot%\system32\winevt\Logs\Application.evtx',
-#      log_size => '2048',
-#      max_log_policy = 'overwrite'
-#    }
+# === Parameters
+#
+# [*log_path*]
+# The path to the log file that you want to manage
+#
+# [*log_size*]
+# The max size of the log file
+#
+# [*max_log_policy*]
+# The retention policy for the log
+#
+# === Examples
+#
+# Manage the size of the Application log:
+#
+#   windows_eventlog { 'Application':
+#     log_path       => '%SystemRoot%\system32\winevt\Logs\Application.evtx',
+#     log_size       => '2048',
+#     max_log_policy => 'overwrite'
+#   }
 #
 define windows_eventlog(
   $log_path,
