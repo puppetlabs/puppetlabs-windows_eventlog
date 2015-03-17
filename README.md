@@ -17,7 +17,7 @@
 
 Puppet module for managing windows event logs
 
-[![Build Status](https://secure.travis-ci.org/liamjbennett/puppet-windows_eventlog.png)](http://travis-ci.org/liamjbennett/puppet-windows_eventlog)
+[![Build Status](https://secure.travis-ci.org/puppet-community/puppet-windows_eventlog.png)](http://travis-ci.org/puppet-community/puppet-windows_eventlog)
 
 ##Module Description
 

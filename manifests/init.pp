@@ -42,7 +42,7 @@ define windows_eventlog(
   validate_re($log_size, '^\d*$','The log_size argument must be a number or a string representation of a number')
   validate_re($max_log_policy, '^(overwrite|manual|archive)$','The max_log_policy argument must contain overwrite, manual or archive')
 
-  $root_key = "HKLM\\System\\CurrentControlSet\\Services\\Eventlog"
+  $root_key = 'HKLM\System\CurrentControlSet\Services\Eventlog'
 
   registry_key { "${root_key}\\${name}":
     ensure => present
