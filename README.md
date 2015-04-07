@@ -21,7 +21,7 @@ Puppet module for managing windows event logs
 
 ##Module Description
 
-The purpose of this module is to manage each of the windows event logs, including the size, rotation and retention
+The purpose of this module is to manage each of the Windows event logs, including the size, rotation and retention
 
 ##Setup
 
@@ -37,7 +37,7 @@ The purpose of this module is to manage each of the windows event logs, includin
     windows_eventlog { 'Application':
       log_path => '%SystemRoot%\system32\winevt\Logs\Application.evtx',
       log_size => '2048',
-      max_log_policy = 'overwrite'
+      max_log_policy => 'overwrite'
     }
 ```
 
@@ -46,7 +46,7 @@ The purpose of this module is to manage each of the windows event logs, includin
 ###Classes and Defined Types:
 
 ####Defined Type: `windows_eventlog`
-The primary definition of this module. Manages the size and rotation policy of windows event logs
+The primary definition of this module. Manages the size and rotation policy of Windows event logs
 
 **Parameters within `windows_eventlog`:**
 #####`log_path`
@@ -62,7 +62,7 @@ The retention policy for the log
 
 ###Defined Types
 ###Public Defined Types
-* [`windows_eventlog`](#define-eventlog): Manages the size and rotation policy of a windows event log
+* [`windows_eventlog`](#define-eventlog): Manages the size and rotation policy of a Windows event log
 
 ##Limitations
 
