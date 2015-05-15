@@ -41,6 +41,13 @@ The purpose of this module is to manage each of the Windows event logs, includin
     }
 ```
 
+  Manage several custom logs under C:\Logs:
+
+```puppet
+   windows_eventlog { ['Custom1', 'Custom2', 'Custom3']:
+     log_path_template => 'C:\Logs\%%NAME%%.evtx'
+   }
+```
 ##Usage
 
 ###Classes and Defined Types:
@@ -50,13 +57,16 @@ The primary definition of this module. Manages the size and rotation policy of W
 
 **Parameters within `windows_eventlog`:**
 #####`log_path`
-The path to the log file that you want to manage
+_(Optional)_ The path to the log file that you want to manage.
 
 #####`log_size`
-The max size of the log file
+The max size of the log file.  Defaults to '`1028`'.
 
 #####`max_log_policy`
-The retention policy for the log
+The retention policy for the log.  Defaults to '`overwrite`'.
+
+##### `log_path_template`
+_(Optional)_ A template for `log_path`, where "`%%NAME%%`" will be replaced with the log name.  Defaults to '`%SystemRoot%\\system32\\winevt\\Logs\\%%NAME%%.evtx`'.
 
 ##Reference
 
