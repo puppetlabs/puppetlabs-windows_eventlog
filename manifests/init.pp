@@ -47,7 +47,7 @@ define windows_eventlog(
   $log_path          = undef,
   $log_size          = '1028',
   $max_log_policy    = 'overwrite',
-  $log_path_template = "%SystemRoot%\\system32\\winevt\\Logs\\%%NAME%%.evtx"
+  $log_path_template = '%SystemRoot%\system32\winevt\Logs\%%NAME%%.evtx'
 ){
   $l_log_path = $log_path? {
     undef   => regsubst( $log_path_template, '%%NAME%%', $name ),
