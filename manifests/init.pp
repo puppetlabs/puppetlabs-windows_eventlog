@@ -22,6 +22,9 @@
 # [*max_log_policy*]
 # The retention policy for the log
 #
+# [*log_path_template*]
+# A template for log_path, where "%%NAME%%" will be replaced with the log name
+#
 # === Examples
 #
 # Manage the size of the Application log:
@@ -32,15 +35,29 @@
 #     max_log_policy => 'overwrite'
 #   }
 #
+#
+# Manage several custom event logs under C:\Logs:
+#
+#   windows_eventlog { ['Custom1', 'Custom2', 'Custom3']:
+#     log_path_template => 'C:\Logs\%%NAME%%.evtx'
+#   }
+#
+#
 define windows_eventlog(
-  $log_path,
-  $log_size = '1028',
-  $max_log_policy = 'overwrite'
+  $log_path          = undef,
+  $log_size          = '1028',
+  $max_log_policy    = 'overwrite',
+  $log_path_template = '%SystemRoot%\system32\winevt\Logs\%%NAME%%.evtx'
 ){
+  $l_log_path = $log_path? {
+    undef   => regsubst( $log_path_template, '%%NAME%%', $name ),
+    default => $log_path,
+  }
 
-  validate_string($log_path)
+  validate_string($l_log_path)
   validate_re($log_size, '^\d*$','The log_size argument must be a number or a string representation of a number')
   validate_re($max_log_policy, '^(overwrite|manual|archive)$','The max_log_policy argument must contain overwrite, manual or archive')
+  validate_re($log_path_template, '%%NAME%%','The log_path_template must contain the string "%%NAME%%"')
 
   $root_key = 'HKLM\System\CurrentControlSet\Services\Eventlog'
 
@@ -51,7 +68,7 @@ define windows_eventlog(
   registry_value { "${root_key}\\${name}\\File":
     ensure => present,
     type   => 'expand',
-    data   => $log_path
+    data   => $l_log_path
   }
 
   registry_value { "${root_key}\\${name}\\MaxSize":
