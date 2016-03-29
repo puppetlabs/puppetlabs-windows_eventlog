@@ -1,6 +1,6 @@
 # puppet-windows_eventlog
 
-####Table of Contents
+#### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description - What is the windows_eventlog module?](#module-description)
@@ -13,23 +13,23 @@
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
-##Overview
+## Overview
 
 Puppet module for managing windows event logs
 
-[![Build Status](https://secure.travis-ci.org/puppet-community/puppet-windows_eventlog.png)](http://travis-ci.org/puppet-community/puppet-windows_eventlog)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-windows_eventlog.svg?branch=master)](https://travis-ci.org/voxpupuli/puppet-windows_eventlog)
 
-##Module Description
+## Module Description
 
 The purpose of this module is to manage each of the Windows event logs, including the size, rotation and retention
 
-##Setup
+## Setup
 
-###What windows_eventlog affects
+### What windows_eventlog affects
 
 * Sets registry keys to manage the event log configuration
 
-###Beginning with windows_eventlog
+### Beginning with windows_eventlog
 
   Manage the size of the Application log:
 
@@ -48,33 +48,41 @@ The purpose of this module is to manage each of the Windows event logs, includin
      log_path_template => 'C:\Logs\%%NAME%%.evtx'
    }
 ```
-##Usage
 
-###Classes and Defined Types:
+## Usage
 
-####Defined Type: `windows_eventlog`
+### Classes and Defined Types:
+
+#### Defined Type: `windows_eventlog`
+
 The primary definition of this module. Manages the size and rotation policy of Windows event logs
 
 **Parameters within `windows_eventlog`:**
-#####`log_path`
+##### `log_path`
+
 _(Optional)_ The path to the log file that you want to manage.
 
-#####`log_size`
+##### `log_size`
+
 The max size of the log file.  Defaults to '`1028`'.
 
-#####`max_log_policy`
+##### `max_log_policy`
+
 The retention policy for the log.  Defaults to '`overwrite`'.
 
 ##### `log_path_template`
+
 _(Optional)_ A template for `log_path`, where "`%%NAME%%`" will be replaced with the log name.  Defaults to '`%SystemRoot%\\system32\\winevt\\Logs\\%%NAME%%.evtx`'.
 
-##Reference
+## Reference
 
-###Defined Types
-###Public Defined Types
+### Defined Types
+
+### Public Defined Types
+
 * [`windows_eventlog`](#define-eventlog): Manages the size and rotation policy of a Windows event log
 
-##Limitations
+## Limitations
 
 This module is tested on the following platforms:
 
@@ -82,8 +90,8 @@ This module is tested on the following platforms:
 
 It is tested with the OSS version of Puppet only.
 
-##Development
+## Development
 
-###Contributing
+### Contributing
 
 Please read CONTRIBUTING.md for full details on contributing to this project.

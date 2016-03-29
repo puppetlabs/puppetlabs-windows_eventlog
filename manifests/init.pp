@@ -62,13 +62,13 @@ define windows_eventlog(
   $root_key = 'HKLM\System\CurrentControlSet\Services\Eventlog'
 
   registry_key { "${root_key}\\${name}":
-    ensure => present
+    ensure => present,
   }
 
   registry_value { "${root_key}\\${name}\\File":
     ensure => present,
     type   => 'expand',
-    data   => $l_log_path
+    data   => $l_log_path,
   }
 
   registry_value { "${root_key}\\${name}\\MaxSize":
@@ -82,21 +82,21 @@ define windows_eventlog(
       registry_value { "${root_key}\\${name}\\Retention":
         ensure => present,
         type   => 'dword',
-        data   => '0'
+        data   => '0',
       }
     }
     'manual': {
       registry_value { "${root_key}\\${name}\\Retention":
         ensure => present,
         type   => 'dword',
-        data   => '1'
+        data   => '1',
       }
     }
     'archive': {
       registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
         ensure => present,
         type   => 'dword',
-        data   => '-1'
+        data   => '-1',
       }
     }
     default: {}
