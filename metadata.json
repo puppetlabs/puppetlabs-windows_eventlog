@@ -1,6 +1,6 @@
 {
   "name": "puppet-windows_eventlog",
-  "version": "1.1.1",
+  "version": "1.1.2-rc0",
   "author": "puppet",
   "license": "Apache-2.0",
   "summary": "Module for managing the windows event log",
