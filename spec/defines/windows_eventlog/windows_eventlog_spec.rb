@@ -23,7 +23,7 @@ describe 'windows_eventlog', type: :define do
     it do
       expect do
         should contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
-      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The log_size argument must be a number or a string representation of a number' }
+      end.to raise_error(Puppet::Error, %r{The log_size argument must be a number or a string representation of a number})
     end
   end
 
@@ -36,7 +36,7 @@ describe 'windows_eventlog', type: :define do
     it do
       expect do
         should contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
-      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The max_log_policy argument must contain overwrite, manual or archive' }
+      end.to raise_error(Puppet::Error, %r{The max_log_policy argument must contain overwrite, manual or archive})
     end
   end
 
@@ -51,7 +51,7 @@ describe 'windows_eventlog', type: :define do
         'ensure' => 'present',
         'type' => 'dword',
         'data' => '1'
-)
+      )
     end
   end
 
@@ -66,7 +66,7 @@ describe 'windows_eventlog', type: :define do
         'ensure' => 'present',
         'type' => 'dword',
         'data' => '0'
-)
+      )
     end
   end
 
@@ -81,7 +81,7 @@ describe 'windows_eventlog', type: :define do
         'ensure' => 'present',
         'type' => 'dword',
         'data' => '-1'
-)
+      )
     end
   end
 
@@ -94,7 +94,7 @@ describe 'windows_eventlog', type: :define do
     it do
       should contain_registry_key('HKLM\System\CurrentControlSet\Services\Eventlog\Application').with(
         'ensure' => 'present'
-)
+      )
     end
 
     it do
@@ -102,7 +102,7 @@ describe 'windows_eventlog', type: :define do
         'ensure' => 'present',
         'type'   => 'expand',
         'data'   => '%SystemRoot%\system32\winevt\Logs\Application.evtx'
-)
+      )
     end
 
     it do
@@ -110,7 +110,7 @@ describe 'windows_eventlog', type: :define do
         'ensure' => 'present',
         'type'   => 'dword',
         'data'   => '2222'
-)
+      )
     end
   end
 
@@ -125,7 +125,7 @@ describe 'windows_eventlog', type: :define do
         'ensure' => 'present',
         'type'   => 'expand',
         'data'   => '%SystemRoot%\system32\winevt\Logs\Something.evtx'
-)
+      )
     end
   end
 
@@ -140,7 +140,7 @@ describe 'windows_eventlog', type: :define do
         'ensure' => 'present',
         'type'   => 'expand',
         'data'   => 'C:\Logs\Custom1'
-)
+      )
     end
   end
 end
