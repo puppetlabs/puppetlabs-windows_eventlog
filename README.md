@@ -1,17 +1,16 @@
-# puppet-windows_eventlog
+# Windows Event Logs module for Puppet
 
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What is the windows_eventlog module?](#module-description)
-3. [Setup - The basics of getting started with windows_eventlog](#setup)
+1. [Module Description - What is the windows_eventlog module?](#module-description)
+1. [Setup - The basics of getting started with windows_eventlog](#setup)
     * [What windows_eventloge affects](#what-windows_eventlog-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with windows_eventlog](#beginning-with-windows_eventlog)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+1. [Usage - Configuration options and additional functionality](#usage)
+1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+1. [Limitations - OS compatibility, etc.](#limitations)
+1. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
@@ -21,7 +20,8 @@ Puppet module for managing windows event logs
 
 ## Module Description
 
-The purpose of this module is to manage each of the Windows event logs, including the size, rotation and retention
+The purpose of this module is to manage each of the Windows event logs,
+including the size, rotation and retention
 
 ## Setup
 
@@ -51,11 +51,12 @@ The purpose of this module is to manage each of the Windows event logs, includin
 
 ## Usage
 
-### Classes and Defined Types:
+### Classes and Defined Types
 
 #### Defined Type: `windows_eventlog`
 
-The primary definition of this module. Manages the size and rotation policy of Windows event logs
+The primary definition of this module. Manages the size and rotation policy of
+Windows event logs
 
 **Parameters within `windows_eventlog`:**
 ##### `log_path`
@@ -72,7 +73,8 @@ The retention policy for the log.  Defaults to '`overwrite`'.
 
 ##### `log_path_template`
 
-_(Optional)_ A template for `log_path`, where "`%%NAME%%`" will be replaced with the log name.  Defaults to '`%SystemRoot%\\system32\\winevt\\Logs\\%%NAME%%.evtx`'.
+_(Optional)_ A template for `log_path`, where "`%%NAME%%`" will be replaced with
+the log name.  Defaults to '`%SystemRoot%\\system32\\winevt\\Logs\\%%NAME%%.evtx`'.
 
 ## Reference
 
@@ -80,7 +82,8 @@ _(Optional)_ A template for `log_path`, where "`%%NAME%%`" will be replaced with
 
 ### Public Defined Types
 
-* [`windows_eventlog`](#define-eventlog): Manages the size and rotation policy of a Windows event log
+* [`windows_eventlog`](#define-eventlog): Manages the size and rotation policy
+  of a Windows event log
 
 ## Limitations
 
