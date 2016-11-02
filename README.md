@@ -1,5 +1,12 @@
 # Windows Event Logs module for Puppet
 
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-windows_eventlog.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-windows_eventlog)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-windows_eventlog/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-windows_eventlog)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/windows_eventlog.svg)](https://forge.puppetlabs.com/puppet/windows_eventlog)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/windows_eventlog.svg)](https://forge.puppetlabs.com/puppet/windows_eventlog)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/windows_eventlog.svg)](https://forge.puppetlabs.com/puppet/windows_eventlog)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/windows_eventlog.svg)](https://forge.puppetlabs.com/puppet/windows_eventlog)
+
 #### Table of Contents
 
 1. [Overview](#overview)
