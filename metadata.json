@@ -1,6 +1,6 @@
 {
   "name": "puppet-windows_eventlog",
-  "version": "1.2.0",
+  "version": "1.2.1-rc0",
   "author": "Vox Pupuli",
   "license": "MIT",
   "summary": "Module for managing the windows event log",
