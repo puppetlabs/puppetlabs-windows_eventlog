@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.0.2](https://github.com/voxpupuli/puppet-windows_eventlog/tree/v2.0.2) (2018-10-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-windows_eventlog/compare/v2.0.1...v2.0.2)
+
+**Closed issues:**
+
+- Support of puppetlabs-registry v2.0.1? [\#40](https://github.com/voxpupuli/puppet-windows_eventlog/issues/40)
+
+**Merged pull requests:**
+
+- modulesync 2.2.0 and allow puppet 6.x [\#46](https://github.com/voxpupuli/puppet-windows_eventlog/pull/46) ([bastelfreak](https://github.com/bastelfreak))
+- Added log\_size should be set in bytes [\#45](https://github.com/voxpupuli/puppet-windows_eventlog/pull/45) ([sshastri](https://github.com/sshastri))
+- allow puppetlabs/stdlib 5.x [\#43](https://github.com/voxpupuli/puppet-windows_eventlog/pull/43) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.0.1](https://github.com/voxpupuli/puppet-windows_eventlog/tree/v2.0.1) (2018-08-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-windows_eventlog/compare/v2.0.0...v2.0.1)
