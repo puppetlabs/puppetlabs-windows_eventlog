@@ -72,7 +72,7 @@ _(Optional)_ The path to the log file that you want to manage.
 
 ##### `log_size`
 
-The max size of the log file in bytes.  Defaults to '`1028`'. 
+The max size of the log file in bytes.  Defaults to '`1028`'.
 
 ##### `max_log_policy`
 
