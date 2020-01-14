@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.0](https://github.com/voxpupuli/puppet-windows_eventlog/tree/v3.0.0) (2020-01-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-windows_eventlog/compare/v2.0.2...v3.0.0)
+
+**Breaking changes:**
+
+- modulesync 2.7.0 and drop puppet 4 [\#51](https://github.com/voxpupuli/puppet-windows_eventlog/pull/51) ([bastelfreak](https://github.com/bastelfreak))
+
+**Closed issues:**
+
+- stdlib 6+ is unsupported [\#57](https://github.com/voxpupuli/puppet-windows_eventlog/issues/57)
+
+**Merged pull requests:**
+
+- Allow puppetlabs/stdlib 6.x [\#56](https://github.com/voxpupuli/puppet-windows_eventlog/pull/56) ([dhoppe](https://github.com/dhoppe))
+- Remove duplicate CONTRIBUTING.md file [\#53](https://github.com/voxpupuli/puppet-windows_eventlog/pull/53) ([dhoppe](https://github.com/dhoppe))
+- Remove Linux acceptance nodesets [\#48](https://github.com/voxpupuli/puppet-windows_eventlog/pull/48) ([ekohl](https://github.com/ekohl))
+
 ## [v2.0.2](https://github.com/voxpupuli/puppet-windows_eventlog/tree/v2.0.2) (2018-10-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-windows_eventlog/compare/v2.0.1...v2.0.2)
