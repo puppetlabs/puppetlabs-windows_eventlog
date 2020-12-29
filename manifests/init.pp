@@ -54,10 +54,10 @@ define windows_eventlog (
     default => $log_path,
   }
 
-  validate_string($l_log_path)
-  validate_re($log_size, '^\d*$','The log_size argument must be a number or a string representation of a number')
-  validate_re($max_log_policy, '^(overwrite|manual|archive)$','The max_log_policy argument must contain overwrite, manual or archive')
-  validate_re($log_path_template, '%%NAME%%','The log_path_template must contain the string "%%NAME%%"')
+  validate_legacy(String, 'validate_string', $l_log_path)
+  validate_legacy(Optional[String], 'validate_re', $log_size, '^\d*$','The log_size argument must be a number or a string representation of a number')
+  validate_legacy(Optional[String], 'validate_re', $max_log_policy, '^(overwrite|manual|archive)$','The max_log_policy argument must contain overwrite, manual or archive')
+  validate_legacy(Optional[String], 'validate_re', $log_path_template, '%%NAME%%','The log_path_template must contain the string "%%NAME%%"')
 
   $root_key = 'HKLM\System\CurrentControlSet\Services\Eventlog'
 
