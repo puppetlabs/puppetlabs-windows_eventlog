@@ -84,6 +84,11 @@ define windows_eventlog (
         type   => 'dword',
         data   => '0',
       }
+      registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
+        ensure => present,
+        type   => 'dword',
+        data   => '0',
+      }
     }
     'manual': {
       registry_value { "${root_key}\\${name}\\Retention":
@@ -91,8 +96,18 @@ define windows_eventlog (
         type   => 'dword',
         data   => '1',
       }
+      registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
+        ensure => present,
+        type   => 'dword',
+        data   => '0',
+      }
     }
     'archive': {
+      registry_value { "${root_key}\\${name}\\Retention":
+        ensure => present,
+        type   => 'dword',
+        data   => '-1',
+      }
       registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
         ensure => present,
         type   => 'dword',
