@@ -77,43 +77,27 @@ define windows_eventlog (
     data   => $log_size,
   }
 
-  case $max_log_policy {
-    'overwrite': {
-      registry_value { "${root_key}\\${name}\\Retention":
-        ensure => present,
-        type   => 'dword',
-        data   => '0',
-      }
-      registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
-        ensure => present,
-        type   => 'dword',
-        data   => '0',
-      }
-    }
-    'manual': {
-      registry_value { "${root_key}\\${name}\\Retention":
-        ensure => present,
-        type   => 'dword',
-        data   => '1',
-      }
-      registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
-        ensure => present,
-        type   => 'dword',
-        data   => '0',
-      }
-    }
-    'archive': {
-      registry_value { "${root_key}\\${name}\\Retention":
-        ensure => present,
-        type   => 'dword',
-        data   => '-1',
-      }
-      registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
-        ensure => present,
-        type   => 'dword',
-        data   => '-1',
-      }
-    }
-    default: {}
+  $retention = $max_log_policy ? {
+    overwrite => '0',
+    manual    => '1',
+    archive   => '-1',
+  }
+
+  registry_value { "${root_key}\\${name}\\Retention":
+    ensure => present,
+    type   => 'dword',
+    data   => $retention,
+  }
+
+  $auto_backup_log_files = $max_log_policy ? {
+    overwrite => '0',
+    manual    => '0',
+    archive   => '-1',
+  }
+
+  registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
+    ensure => present,
+    type   => 'dword',
+    data   => $auto_backup_log_files,
   }
 }
