@@ -78,9 +78,9 @@ define windows_eventlog (
   }
 
   $retention = $max_log_policy ? {
-    overwrite => '0',
-    manual    => '1',
-    archive   => '-1',
+    'overwrite' => '0',
+    'manual'    => '1',
+    'archive'   => '-1',
   }
 
   registry_value { "${root_key}\\${name}\\Retention":
@@ -90,9 +90,9 @@ define windows_eventlog (
   }
 
   $auto_backup_log_files = $max_log_policy ? {
-    overwrite => '0',
-    manual    => '0',
-    archive   => '-1',
+    'overwrite' => '0',
+    'manual'    => '0',
+    'archive'   => '-1',
   }
 
   registry_value { "${root_key}\\${name}\\AutoBackupLogFiles":
