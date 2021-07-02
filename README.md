@@ -43,8 +43,8 @@ including the size, rotation and retention
 ```puppet
     windows_eventlog { 'Application':
       log_path => '%SystemRoot%\system32\winevt\Logs\Application.evtx',
-      log_size => '2048',
-      max_log_policy => 'overwrite'
+      log_size => 2048,
+      max_log_policy => 'overwrite',
     }
 ```
 
@@ -52,7 +52,7 @@ including the size, rotation and retention
 
 ```puppet
    windows_eventlog { ['Custom1', 'Custom2', 'Custom3']:
-     log_path_template => 'C:\Logs\%%NAME%%.evtx'
+     log_path_template => 'C:\Logs\%%NAME%%.evtx',
    }
 ```
 
@@ -72,7 +72,7 @@ _(Optional)_ The path to the log file that you want to manage.
 
 ##### `log_size`
 
-The max size of the log file in bytes.  Defaults to '`1028`'.
+The max size of the log file in bytes.  Defaults to `1028`.
 
 ##### `max_log_policy`
 

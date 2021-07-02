@@ -4,7 +4,7 @@ describe 'windows_eventlog', type: :define do
   describe 'log with incorrect log_path' do
     let(:title) { 'Application' }
     let :params do
-      { log_path: true, log_size: '1028', max_log_policy: 'overwrite' }
+      { log_path: true, log_size: 1028, max_log_policy: 'overwrite' }
     end
 
     it do
@@ -23,27 +23,27 @@ describe 'windows_eventlog', type: :define do
     it do
       expect do
         is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
-      end.to raise_error(Puppet::Error, %r{The log_size argument must be a number or a string representation of a number})
+      end.to raise_error(Puppet::PreformattedError)
     end
   end
 
   describe 'log with incorrect max_log_policy' do
     let(:title) { 'Application' }
     let :params do
-      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: '1028', max_log_policy: 'nothing' }
+      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: 1028, max_log_policy: 'nothing' }
     end
 
     it do
       expect do
         is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
-      end.to raise_error(Puppet::Error, %r{The max_log_policy argument must contain overwrite, manual or archive})
+      end.to raise_error(Puppet::PreformattedError)
     end
   end
 
   describe 'log with manual max_log_policy' do
     let(:title) { 'Application' }
     let :params do
-      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: '1028', max_log_policy: 'manual' }
+      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: 1028, max_log_policy: 'manual' }
     end
 
     it do
@@ -58,7 +58,7 @@ describe 'windows_eventlog', type: :define do
   describe 'log with overwrite max_log_policy' do
     let(:title) { 'Application' }
     let :params do
-      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: '1028', max_log_policy: 'overwrite' }
+      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: 1028, max_log_policy: 'overwrite' }
     end
 
     it do
@@ -73,7 +73,7 @@ describe 'windows_eventlog', type: :define do
   describe 'log with archive max_log_policy' do
     let(:title) { 'Application' }
     let :params do
-      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: '1028', max_log_policy: 'archive' }
+      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: 1028, max_log_policy: 'archive' }
     end
 
     it do
@@ -88,7 +88,7 @@ describe 'windows_eventlog', type: :define do
   describe 'log default data' do
     let(:title) { 'Application' }
     let :params do
-      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: '2222', max_log_policy: 'manual' }
+      { log_path: '%SystemRoot%\system32\winevt\Logs\Application.evtx', log_size: 2222, max_log_policy: 'manual' }
     end
 
     it do
@@ -117,7 +117,7 @@ describe 'windows_eventlog', type: :define do
   describe 'log without a log_path' do
     let(:title) { 'Something' }
     let :params do
-      { log_size: '1028', max_log_policy: 'overwrite' }
+      { log_size: 1028, max_log_policy: 'overwrite' }
     end
 
     it 'infers the log_path using $name' do
@@ -132,7 +132,7 @@ describe 'windows_eventlog', type: :define do
   describe 'log with a custom log_path_template and without log_path' do
     let(:title) { 'Custom1' }
     let :params do
-      { :log_size => '1028', :max_log_policy => 'overwrite', 'log_path_template' => 'C:\Logs\%%NAME%%' }
+      { :log_size => 1028, :max_log_policy => 'overwrite', 'log_path_template' => 'C:\Logs\%%NAME%%' }
     end
 
     it 'infers the log_path using $log_path_template and $name' do
