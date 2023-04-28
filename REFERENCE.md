@@ -38,21 +38,21 @@ windows_eventlog { ['Custom1', 'Custom2', 'Custom3']:
 
 The following parameters are available in the `windows_eventlog` defined type:
 
-* [`log_path`](#log_path)
-* [`log_size`](#log_size)
-* [`max_log_policy`](#max_log_policy)
-* [`log_path_template`](#log_path_template)
-* [`root_key`](#root_key)
+* [`log_path`](#-windows_eventlog--log_path)
+* [`log_size`](#-windows_eventlog--log_size)
+* [`max_log_policy`](#-windows_eventlog--max_log_policy)
+* [`log_path_template`](#-windows_eventlog--log_path_template)
+* [`root_key`](#-windows_eventlog--root_key)
 
-##### <a name="log_path"></a>`log_path`
+##### <a name="-windows_eventlog--log_path"></a>`log_path`
 
 Data type: `Optional[String[1]]`
 
 The path to the log file that you want to manage
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="log_size"></a>`log_size`
+##### <a name="-windows_eventlog--log_size"></a>`log_size`
 
 Data type: `Integer`
 
@@ -60,7 +60,7 @@ The max size of the log file
 
 Default value: `1028`
 
-##### <a name="max_log_policy"></a>`max_log_policy`
+##### <a name="-windows_eventlog--max_log_policy"></a>`max_log_policy`
 
 Data type: `Enum['overwrite', 'manual', 'archive']`
 
@@ -68,7 +68,7 @@ The retention policy for the log
 
 Default value: `'overwrite'`
 
-##### <a name="log_path_template"></a>`log_path_template`
+##### <a name="-windows_eventlog--log_path_template"></a>`log_path_template`
 
 Data type: `String[1]`
 
@@ -76,7 +76,7 @@ A template for log_path, where "%%NAME%%" will be replaced with the log name
 
 Default value: `'%SystemRoot%\system32\winevt\Logs\%%NAME%%.evtx'`
 
-##### <a name="root_key"></a>`root_key`
+##### <a name="-windows_eventlog--root_key"></a>`root_key`
 
 Data type: `String[1]`
 
