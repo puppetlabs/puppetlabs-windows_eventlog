@@ -1,4 +1,4 @@
 fixtures:
   repositories:
-    stdlib:  git://github.com/puppetlabs/puppetlabs-stdlib.git
-    registry: git://github.com/puppetlabs/puppetlabs-registry.git
+    stdlib:  https://github.com/puppetlabs/puppetlabs-stdlib.git
+    registry: https://github.com/puppetlabs/puppetlabs-registry.git
