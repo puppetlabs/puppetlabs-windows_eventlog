@@ -20,7 +20,7 @@
 # @example Manage the size of the Application log:
 #   windows_eventlog { 'Application':
 #     log_path       => '%SystemRoot%\system32\winevt\Logs\Application.evtx',
-#     log_size       => '2048',
+#     log_size       => 2048,
 #     max_log_policy => 'overwrite'
 #   }
 #
