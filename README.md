@@ -1,5 +1,7 @@
 # windows_eventlog
 
+[![Donated by Vox Pupuli](https://img.shields.io/badge/donated%20by-Vox%20Pupuli-fb7047.svg)](#transfer-notice)
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -98,3 +100,7 @@ It is tested with the OSS version of Puppet only.
 ### Contributing
 
 Please read CONTRIBUTING.md for full details on contributing to this project.
+
+## Transfer notice
+
+This module was previously maintained by Vox Pupuli. It was migrated to Puppet/Perforce in 2023.
