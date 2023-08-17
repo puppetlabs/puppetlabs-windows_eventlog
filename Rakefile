@@ -10,7 +10,7 @@ require 'puppet-strings/tasks' if Bundler.rubygems.find_name('puppet-strings').a
 def changelog_user
   return unless Rake.application.top_level_tasks.include? 'changelog'
 
-  returnVal = nil || JSON.load(File.read('metadata.json'))['author']
+  returnVal = nil || JSON.parse(File.read('metadata.json'))['author']
   raise 'unable to find the changelog_user in .sync.yml, or the author in metadata.json' if returnVal.nil?
 
   puts "GitHubChangelogGenerator user:#{returnVal}"
@@ -22,8 +22,8 @@ def changelog_project
 
   returnVal = nil
   returnVal ||= begin
-    metadata_source = JSON.load(File.read('metadata.json'))['source']
-    metadata_source_match = metadata_source && metadata_source.match(%r{.*/([^/]*?)(?:\.git)?\Z})
+    metadata_source = JSON.parse(File.read('metadata.json'))['source']
+    metadata_source_match = metadata_source&.match(%r{.*/([^/]*?)(?:\.git)?\Z})
 
     metadata_source_match && metadata_source_match[1]
   end
@@ -37,24 +37,22 @@ end
 def changelog_future_release
   return unless Rake.application.top_level_tasks.include? 'changelog'
 
-  returnVal = 'v%s' % JSON.load(File.read('metadata.json'))['version']
+  returnVal = format('v%s', JSON.parse(File.read('metadata.json'))['version'])
   raise 'unable to find the future_release (version) in metadata.json' if returnVal.nil?
 
   puts "GitHubChangelogGenerator future_release:#{returnVal}"
   returnVal
 end
 
-PuppetLint.configuration.send('disable_relative')
+PuppetLint.configuration.send(:disable_relative)
 
 if Bundler.rubygems.find_name('github_changelog_generator').any?
   GitHubChangelogGenerator::RakeTask.new :changelog do |config|
-    if Rake.application.top_level_tasks.include? 'changelog' and ENV['CHANGELOG_GITHUB_TOKEN'].nil?
-      raise "Set CHANGELOG_GITHUB_TOKEN environment variable eg 'export CHANGELOG_GITHUB_TOKEN=valid_token_here'"
-    end
+    raise "Set CHANGELOG_GITHUB_TOKEN environment variable eg 'export CHANGELOG_GITHUB_TOKEN=valid_token_here'" if Rake.application.top_level_tasks.include?('changelog') && ENV['CHANGELOG_GITHUB_TOKEN'].nil?
 
-    config.user = "#{changelog_user}"
-    config.project = "#{changelog_project}"
-    config.future_release = "#{changelog_future_release}"
+    config.user = changelog_user.to_s
+    config.project = changelog_project.to_s
+    config.future_release = changelog_future_release.to_s
     config.exclude_labels = ['maintenance']
     config.header = "# Change log\n\nAll notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org)."
     config.add_pr_wo_labels = true

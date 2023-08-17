@@ -1,4 +1,4 @@
-## [v1.2.0](https://github.com/voxpupuli/puppet-windows_eventlog/tree/v1.2.0) (2017-02-11)
+## [v1.2.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v1.2.0) (2017-02-11)
 
 This is the last release with Puppet3 support!
 * Sync metadata.json license to be same as LICENSE

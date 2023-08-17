@@ -1,5 +1,5 @@
 {
-  "name": "puppet-windows_eventlog",
+  "name": "puppetlabs-windows_eventlog",
   "version": "4.0.0",
   "author": "puppetlabs",
   "license": "MIT",

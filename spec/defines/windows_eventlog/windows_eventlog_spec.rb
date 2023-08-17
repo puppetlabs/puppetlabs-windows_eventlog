@@ -11,7 +11,7 @@ describe 'windows_eventlog', type: :define do
 
     it do
       expect do
-        is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
+        expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
       end.to raise_error(Puppet::Error)
     end
   end
@@ -24,7 +24,7 @@ describe 'windows_eventlog', type: :define do
 
     it do
       expect do
-        is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
+        expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
       end.to raise_error(Puppet::PreformattedError)
     end
   end
@@ -37,7 +37,7 @@ describe 'windows_eventlog', type: :define do
 
     it do
       expect do
-        is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
+        expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File')
       end.to raise_error(Puppet::PreformattedError)
     end
   end
@@ -49,7 +49,7 @@ describe 'windows_eventlog', type: :define do
     end
 
     it do
-      is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\Retention').with(
+      expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\Retention').with(
         'ensure' => 'present',
         'type' => 'dword',
         'data' => '1'
@@ -64,7 +64,7 @@ describe 'windows_eventlog', type: :define do
     end
 
     it do
-      is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\Retention').with(
+      expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\Retention').with(
         'ensure' => 'present',
         'type' => 'dword',
         'data' => '0'
@@ -79,7 +79,7 @@ describe 'windows_eventlog', type: :define do
     end
 
     it do
-      is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\AutoBackupLogFiles').with(
+      expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\AutoBackupLogFiles').with(
         'ensure' => 'present',
         'type' => 'dword',
         'data' => '-1'
@@ -94,13 +94,13 @@ describe 'windows_eventlog', type: :define do
     end
 
     it do
-      is_expected.to contain_registry_key('HKLM\System\CurrentControlSet\Services\Eventlog\Application').with(
+      expect(subject).to contain_registry_key('HKLM\System\CurrentControlSet\Services\Eventlog\Application').with(
         'ensure' => 'present'
       )
     end
 
     it do
-      is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File').with(
+      expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\File').with(
         'ensure' => 'present',
         'type' => 'expand',
         'data' => '%SystemRoot%\system32\winevt\Logs\Application.evtx'
@@ -108,7 +108,7 @@ describe 'windows_eventlog', type: :define do
     end
 
     it do
-      is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\MaxSize').with(
+      expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Application\MaxSize').with(
         'ensure' => 'present',
         'type' => 'dword',
         'data' => '2222'
@@ -123,7 +123,7 @@ describe 'windows_eventlog', type: :define do
     end
 
     it 'infers the log_path using $name' do
-      is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Something\File').with(
+      expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Something\File').with(
         'ensure' => 'present',
         'type' => 'expand',
         'data' => '%SystemRoot%\system32\winevt\Logs\Something.evtx'
@@ -138,7 +138,7 @@ describe 'windows_eventlog', type: :define do
     end
 
     it 'infers the log_path using $log_path_template and $name' do
-      is_expected.to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Custom1\File').with(
+      expect(subject).to contain_registry_value('HKLM\System\CurrentControlSet\Services\Eventlog\Custom1\File').with(
         'ensure' => 'present',
         'type' => 'expand',
         'data' => 'C:\Logs\Custom1'
