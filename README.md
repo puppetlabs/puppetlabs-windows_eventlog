@@ -18,8 +18,6 @@
 
 Puppet module for managing windows event logs
 
-[![Build Status](https://travis-ci.org/voxpupuli/puppet-windows_eventlog.svg?branch=master)](https://travis-ci.org/voxpupuli/puppet-windows_eventlog)
-
 ## Module Description
 
 The purpose of this module is to manage each of the Windows event logs,
