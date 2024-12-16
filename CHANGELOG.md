@@ -5,28 +5,38 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.1.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v4.1.0) - 2024-12-16
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v4.0.0...v4.1.0)
+
+### Fixed
+
+- (CAT-2158) Upgrade rexml to address CVE-2024-49761 [#90](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/90) ([amitkarsale](https://github.com/amitkarsale))
+
 ## [v4.0.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v4.0.0) - 2023-08-17
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v3.0.0...v4.0.0)
+
+### Changed
+
+- Drop Puppet 6 support [#73](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/73) ([bastelfreak](https://github.com/bastelfreak))
+- Modernize module [#68](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/68) ([ghoneycutt](https://github.com/ghoneycutt))
 
 ### Added
 
 - Allow stdlib 8.0.0 [#69](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/69) ([smortex](https://github.com/smortex))
 
-### Changed
-- Drop Puppet 6 support [#73](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/73) ([bastelfreak](https://github.com/bastelfreak))
-- Modernize module [#68](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/68) ([ghoneycutt](https://github.com/ghoneycutt))
-
 ## [v3.0.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v3.0.0) - 2020-01-16
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v2.0.2...v3.0.0)
 
+### Changed
+
+- modulesync 2.7.0 and drop puppet 4 [#51](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/51) ([bastelfreak](https://github.com/bastelfreak))
+
 ### Added
 
 - Allow puppetlabs/stdlib 6.x [#56](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/56) ([dhoppe](https://github.com/dhoppe))
-
-### Changed
-- modulesync 2.7.0 and drop puppet 4 [#51](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/51) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [v2.0.2](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v2.0.2) - 2018-10-19
 
