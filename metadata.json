@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-windows_eventlog",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "author": "puppetlabs",
   "summary": "Module for managing the windows event log",
   "license": "MIT",
