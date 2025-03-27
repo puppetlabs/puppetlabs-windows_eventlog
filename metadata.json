@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-windows_eventlog",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "author": "puppetlabs",
   "summary": "Module for managing the windows event log for Windows 2016, 2019, and 2022.",
   "license": "MIT",
