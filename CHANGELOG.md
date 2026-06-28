@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v5.0.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v5.0.0) - 2026-06-28
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v4.1.1...v5.0.0)
+
+### Changed
+
+- (CAT-2399) Puppetcore update [#95](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/95) ([LukasAud](https://github.com/LukasAud))
+
+### Other
+
+- (MODULES-11840) Allow puppetlabs/stdlib 10.x [#96](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/96) ([imaqsood](https://github.com/imaqsood))
+
 ## [v4.1.1](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v4.1.1) - 2025-03-27
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v4.1.0...v4.1.1)
