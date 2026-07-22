@@ -9,6 +9,11 @@ else
 end
 source gemsource_default
 
+# The Puppet 9 (8.99.x) stream needs newer lint tooling (puppet-lint 5.x, and a
+# puppetlabs_spec_helper that allows it) because puppet-lint 4.x crashes on Ruby 3.4+.
+# Puppet 7/8 keep the released, already-working versions. See MODULES-11729 / MODULES-11700.
+puppet9_stream = ENV['PUPPET_GEM_VERSION'].to_s.match?(/\A(?:~>\s*)?(?:8\.99|9)/)
+
 def location_for(place_or_constraint, fake_constraint = nil, opts = {})
   git_url_regex  = /\A(?<url>(?:https?|git)[:@][^#]*)(?:#(?<branch>.*))?/
   file_url_regex = %r{\Afile://(?<path>.*)}
@@ -40,7 +45,11 @@ group :development do
   gem "json", '= 2.6.3',                         require: false if Gem::Requirement.create(['>= 3.2.0', '< 4.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "racc", '~> 1.4.0',                        require: false if Gem::Requirement.create(['>= 2.7.0', '< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "deep_merge", '~> 1.2.2',                  require: false
-  gem "voxpupuli-puppet-lint-plugins", '~> 5.0', require: false
+  if puppet9_stream
+    gem "voxpupuli-puppet-lint-plugins", '~> 7.0', require: false
+  else
+    gem "voxpupuli-puppet-lint-plugins", '~> 5.0', require: false
+  end
   gem "facterdb", '~> 2.1',                      require: false if Gem::Requirement.create(['< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "facterdb", '~> 3.0',                      require: false if Gem::Requirement.create(['>= 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "metadata-json-lint", '~> 4.0',            require: false
@@ -63,12 +72,25 @@ group :development do
 end
 group :development, :release_prep do
   gem "puppet-strings", '~> 4.0',         require: false
-  gem "puppetlabs_spec_helper", '~> 8.0', require: false
+  if puppet9_stream
+    # TODO(MODULES-11729): temporary — depends on an unmerged puppetlabs_spec_helper branch that
+    # allows puppet-lint 5.x. Swap back to a released '~> 8.x' (or newer) gem once that support ships.
+    gem "puppetlabs_spec_helper", git: 'https://github.com/puppetlabs/puppetlabs_spec_helper.git', branch: 'MODULES-11700-allow-puppet-lint-5', require: false
+  else
+    gem "puppetlabs_spec_helper", '~> 8.0', require: false
+  end
   gem "puppet-blacksmith", '~> 7.0',      require: false
 end
 group :system_tests do
-  gem "puppet_litmus", '~> 2.0',   require: false, platforms: [:ruby, :x64_mingw] if !ENV['PUPPET_FORGE_TOKEN'].to_s.empty?
-  gem "puppet_litmus", '~> 1.0',   require: false, platforms: [:ruby, :x64_mingw] if ENV['PUPPET_FORGE_TOKEN'].to_s.empty?
+  if !ENV['PUPPET_FORGE_TOKEN'].to_s.empty?
+    # TODO(MODULES-11729): temporary — depends on an unmerged puppet_litmus branch that adds
+    # --collection-platform-exclude to matrix_from_metadata_v3 (keeps a platform in the Puppet 8
+    # acceptance lane while dropping it from Puppet 9, e.g. ubuntu-20.04). Swap back to a
+    # released gem once that support ships.
+    gem "puppet_litmus", git: 'https://github.com/puppetlabs/puppet_litmus.git', branch: 'MODULES-11700-collection-platform-exclude', require: false, platforms: [:ruby, :x64_mingw]
+  else
+    gem "puppet_litmus", '~> 1.0', require: false, platforms: [:ruby, :x64_mingw]
+  end
   gem "CFPropertyList", '< 3.0.7', require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "serverspec", '~> 2.41',     require: false
 end
@@ -80,8 +102,21 @@ facter_version = ENV.fetch('FACTER_GEM_VERSION', nil)
 hiera_version = ENV.fetch('HIERA_GEM_VERSION', nil)
 
 gems['bolt'] = location_for(bolt_version, nil, { source: gemsource_puppetcore })
-gems['puppet'] = location_for(puppet_version, nil, { source: gemsource_puppetcore })
-gems['facter'] = location_for(facter_version, nil, { source: gemsource_puppetcore })
+if puppet_version.to_s.match?(/\A(?:~>\s*)?(?:8\.99|9)/)
+  # The Puppet 9 stream (8.99.x PRE-releases) is served from a source injected via the
+  # PUPPET_GEM_SOURCE env var (a CI secret / local export) so no internal host is committed
+  # here. The secret is often EMPTY (repos without it) and '' is truthy in Ruby, so guard on
+  # emptiness — not `||` — and fall back to the puppetcore source (auth'd via PUPPET_FORGE_TOKEN).
+  # The CI matrix labels this lane '~> 9.0' but carries no exact build, so use a prerelease-aware
+  # range that resolves the newest 8.99.x; an exact PUPPET_GEM_VERSION is honoured as-is.
+  puppet9_source = ENV['PUPPET_GEM_SOURCE'].to_s.empty? ? gemsource_puppetcore : ENV['PUPPET_GEM_SOURCE']
+  puppet9_req = puppet_version.to_s.match?(/\d+\.\d+\.\d/) ? [puppet_version] : ['>= 8.99.0.a', '< 9']
+  gems['puppet'] = [*puppet9_req, { require: false, source: puppet9_source }]
+  gems['facter'] = ['>= 4.11', { require: false, source: puppet9_source }]
+else
+  gems['puppet'] = location_for(puppet_version, nil, { source: gemsource_puppetcore })
+  gems['facter'] = location_for(facter_version, nil, { source: gemsource_puppetcore })
+end
 gems['hiera'] = location_for(hiera_version, nil, {}) if hiera_version
 
 # Generate the gem definitions
