@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v5.2.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v5.2.0) - 2026-08-31
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v5.1.0...v5.2.0)
+
+### Added
+
+- (MODULES-11729) Add Puppet 9 support [#100](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/100) ([imaqsood](https://github.com/imaqsood))
+
 ## [v5.1.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v5.1.0) - 2026-07-14
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v5.0.0...v5.1.0)
