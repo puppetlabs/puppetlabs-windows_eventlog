@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v5.2.1](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v5.2.1) - 2026-09-04
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v5.2.0...v5.2.1)
+
+### Other
+
+- (MODULES-11708) Widen puppetlabs/registry dependency to allow 6.x [#103](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/103) ([span786](https://github.com/span786))
+- Configure Mend for GitHub.com [#92](https://github.com/puppetlabs/puppetlabs-windows_eventlog/pull/92) ([mend-for-github-com](https://github.com/mend-for-github-com))
+
 ## [v5.2.0](https://github.com/puppetlabs/puppetlabs-windows_eventlog/tree/v5.2.0) - 2026-08-31
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-windows_eventlog/compare/v5.1.0...v5.2.0)
