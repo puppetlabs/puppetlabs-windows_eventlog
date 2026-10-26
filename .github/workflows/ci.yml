@@ -20,6 +20,6 @@ jobs:
     needs: Spec
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
     with:
-      flags: '--latest-agent --nightly'
+      flags: "--nightly"
       ruby_version: "3.2"
     secrets: "inherit"
